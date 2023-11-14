@@ -8,6 +8,7 @@
     less
     nodejs_20
     ripgrep
+    wget
     zellij
   ];
   home.sessionVariables = {
