@@ -29,7 +29,7 @@
     caskArgs.no_quarantine = true;
     global.brewfile = true;
     masApps = { };
-    casks = [];
+    casks = [ "wezterm" ];
     taps = [];
     brews = [];
   };
