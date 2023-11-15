@@ -54,7 +54,7 @@
       return {
         enable_tab_bar = false,
         font = wezterm.font("MesloLGS Nerd Font Mono"),
-        font_size = 16.0,
+        font_size = 14.0,
         color_scheme = 'Catppuccin Mocha'
       }
     '';
