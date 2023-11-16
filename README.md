@@ -20,3 +20,8 @@ nix run nix-darwin -- switch --flake ~/.config/nix
 ```bash
 nixup
 ```
+
+## Future improvements
+
+- Modularize config and support multiple machines in a cleaner way
+  - Inspiration: https://github.com/sebastiant/dotfiles
