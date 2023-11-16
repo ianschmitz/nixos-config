@@ -53,12 +53,15 @@
 
     programs.tmux = {
         enable = true;
+        # Required by neovim. Shows up in :checkhealth
+        escapeTime = 0;
         # This along with 'terminal' enables true color support.
         extraConfig = ''
             set -as terminal-overrides ",*-256color*:RGB"
         '';
         historyLimit = 50000;
         terminal = "screen-256color";
+        tmuxp.enable = true;
     };
 
     programs.wezterm = {
