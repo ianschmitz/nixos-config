@@ -41,6 +41,7 @@
         syntaxHighlighting.enable = true;
         shellAliases = {
             ls = "ls --color=auto -F";
+            ll = "ls -alF";
             nixswitch = "darwin-rebuild switch --flake ~/Code/nix/.#";
             nixup = "pushd ~/Code/nix; nix flake update; nixswitch; popd";
         };
