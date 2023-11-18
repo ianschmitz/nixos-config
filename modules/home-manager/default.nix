@@ -54,6 +54,8 @@
 
     programs.tmux = {
         enable = true;
+        # Start windows at 1 instead of 0.
+        baseIndex = 1;
         # Required by neovim. Shows up in :checkhealth
         escapeTime = 0;
         # This along with 'terminal' enables true color support.
