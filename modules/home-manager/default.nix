@@ -61,8 +61,14 @@
         # This along with 'terminal' enables true color support.
         extraConfig = ''
             set -as terminal-overrides ",*-256color*:RGB"
+            set -g @catppuccin_flavour 'mocha'
         '';
         historyLimit = 50000;
+        keyMode = "vi";
+        prefix = "C-a";
+        plugins = with pkgs; [
+            tmuxPlugins.catppuccin
+        ];
         terminal = "screen-256color";
         tmuxp.enable = true;
     };
