@@ -4,7 +4,7 @@
   environment = {
     shells = with pkgs; [ bash zsh ];
     loginShell = pkgs.zsh;
-    systemPackages = [ pkgs.coreutils ];
+    systemPackages = with pkgs; [ coreutils ripgrep ];
     systemPath = [ "/opt/homebrew/bin" ];
     pathsToLink = [ "/Applications" ];
   };
@@ -31,6 +31,9 @@
     masApps = { };
     casks = [ "wezterm" ];
     taps = [];
-    brews = [];
+    brews = [ 
+      # Needed for nvim-spectre
+      "gnu-sed"
+    ];
   };
 }
