@@ -9,7 +9,6 @@
         nodejs_20
         ripgrep
         wget
-        zellij
     ];
     home.sessionVariables = {
         PAGER = "less";
@@ -65,6 +64,7 @@
         '';
         historyLimit = 50000;
         keyMode = "vi";
+        mouse = true;
         prefix = "C-a";
         plugins = with pkgs; [
             tmuxPlugins.catppuccin
@@ -79,10 +79,20 @@
         extraConfig = ''
             return {
                 hide_tab_bar_if_only_one_tab = true,
-                font_size = 16.0,
+                font_size = 15.0,
+                front_end = "WebGpu",
                 color_scheme = 'Catppuccin Mocha'
             }
         '';
+    };
+
+    programs.zellij = {
+        enable = false;
+        # Starts zellij when terminal is launched if enabled.
+        enableZshIntegration = false;
+        settings = {
+            theme = "catppuccin-mocha";
+        };
     };
 
     home.file = {
