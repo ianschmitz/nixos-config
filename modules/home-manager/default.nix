@@ -1,7 +1,8 @@
 { config, pkgs, ... }: {
-# Don't change this when you change package input. Leave it alone.
+    # Don't change this when you change package input. Leave it alone.
     home.stateVersion = "23.11";
     home.packages = with pkgs; [
+        btop
         curl
         fd
         lazygit
