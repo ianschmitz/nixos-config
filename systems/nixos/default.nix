@@ -35,7 +35,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     git
-    xclip
   ];
 
   programs.ssh.startAgent = true;
