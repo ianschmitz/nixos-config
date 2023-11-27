@@ -44,7 +44,7 @@
             home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                extraSpecialArgs = { repoPath = "/home/ian/code/nix"; };
+                extraSpecialArgs = { repoPath = "/home/ian/Code/nix"; };
                 users.ian = import ./modules/home-manager;
             };
           }
