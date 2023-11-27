@@ -12,8 +12,9 @@
     darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, darwin, ... }: {
-    darwinConfigurations."ian-macbook-work" = darwin.lib.darwinSystem {
+  outputs = inputs@{ home-manager, darwin, nixpkgs, ... }: {
+    darwinConfigurations = {
+      ian-macbook-work = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [
           ./systems/darwin
@@ -23,13 +24,32 @@
             home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
+                extraSpecialArgs = { repoPath = "/Users/ian/Code/nix"; };
                 users.ian = import ./modules/home-manager;
             };
-
-            # Optionally, use home-manager.extraSpecialArgs to pass
-            # arguments to home.nix
           }
         ];
+      };
+    };
+
+    nixosConfigurations = {
+      ian-desktop-nixos = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./systems/nixos
+          ./hosts/nixos/ian-desktop-nixos/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            users.users.ian.home = "/home/ian";
+            home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = { repoPath = "/home/ian/code/nix"; };
+                users.ian = import ./modules/home-manager;
+            };
+          }
+        ];
+      };
     };
   };
 }

@@ -4,7 +4,7 @@
   environment = {
     shells = with pkgs; [ bash zsh ];
     loginShell = pkgs.zsh;
-    systemPackages = with pkgs; [ coreutils ripgrep ];
+    systemPackages = with pkgs; [ coreutils ];
     systemPath = [ "/opt/homebrew/bin" ];
     pathsToLink = [ "/Applications" ];
   };

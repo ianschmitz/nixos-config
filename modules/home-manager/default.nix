@@ -1,14 +1,16 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, repoPath, ... }: {
     # Don't change this when you change package input. Leave it alone.
     home.stateVersion = "23.11";
     home.packages = with pkgs; [
         btop
+        cargo
         curl
         fd
         lazygit
         less
         nodejs_20
         ripgrep
+        rustc
         wget
     ];
     home.sessionVariables = {
@@ -34,17 +36,10 @@
         vimdiffAlias = true;
     };
 
-    programs.zsh = {
+    programs.pyenv = {
         enable = true;
-        enableCompletion = true;
-        enableAutosuggestions = true;
-        syntaxHighlighting.enable = true;
-        shellAliases = {
-            ls = "ls --color=auto -F";
-            ll = "ls -alF";
-            nixswitch = "darwin-rebuild switch --flake ~/Code/nix/.#";
-            nixup = "pushd ~/Code/nix; nix flake update; nixswitch; popd";
-        };
+        enableZshIntegration = true;
+        rootDirectory = "${config.home.homeDirectory}/.pyenv";
     };
 
     programs.starship = {
@@ -96,10 +91,23 @@
         };
     };
 
+    programs.zsh = {
+        enable = true;
+        enableCompletion = true;
+        enableAutosuggestions = true;
+        syntaxHighlighting.enable = true;
+        shellAliases = {
+            ls = "ls --color=auto -F";
+            ll = "ls -alF";
+            nixswitch = "darwin-rebuild switch --flake ~/Code/nix/.#";
+            nixup = "pushd ~/Code/nix; nix flake update; nixswitch; popd";
+        };
+    };
+
     home.file = {
         ".inputrc".source = ./dotfiles/.inputrc;
         # Need to use mkOutOfStoreSymlink to keep the recursive file ownership
         # set to the current user which allows neovim to update the files within.
-        ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "/Users/ian/Code/nix/modules/home-manager/dotfiles/nvim";
+        ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink (repoPath + "/modules/home-manager/dotfiles/nvim");
     };
 }
