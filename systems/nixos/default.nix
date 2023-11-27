@@ -35,7 +35,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     git
-    xclip
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
