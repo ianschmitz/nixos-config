@@ -26,7 +26,11 @@
 
     programs.eza.enable = true;
 
-    programs.git.enable = true;
+    programs.git = {
+        enable = true;
+        userName = "Ian Schmitz";
+        userEmail = "ianschmitz@gmail.com";
+    };
 
     programs.neovim = {
         enable = true;
