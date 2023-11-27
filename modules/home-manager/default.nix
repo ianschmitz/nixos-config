@@ -7,6 +7,7 @@
         curl
         dig
         fd
+        gcc
         lazygit
         less
         nodejs_20
