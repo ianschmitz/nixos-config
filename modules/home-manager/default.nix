@@ -5,6 +5,7 @@
         btop
         cargo
         curl
+        dig
         fd
         lazygit
         less
